@@ -55,7 +55,7 @@ This is the most complex part. We need to create a project in Google Cloud and e
     *   **Download the JSON file**. Rename it to [`credentials.json`](credentials.json) and place it in the root of this project folder.
 
 ### 4. Configuration
-## 4.1 Cloning this repository in your machine
+#### 4.1 Cloning this repository in your machine
 1.  Create a [`.env`](.env) file in the directory.
 2.  Fill in the values:
 
@@ -81,7 +81,7 @@ GEMINI_API_KEY=your_gemini_key_here
 
     After the tool syncs GitHub issues with Google Tasks, a file named "last_run.json" will be created.
 
-## 4.2 Using Github
+#### 4.2 Using Github
 Even using GitHub to sync using a workflow, we need to clone and create the `token.json` file mentioned above. This file is needed.
 1. Go to your repository secrets: Settings > Secrets and Variables > Actions > Secrets > New Repository Secret, and create 5 new secrets.
 
