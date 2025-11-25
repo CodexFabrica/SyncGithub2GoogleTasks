@@ -6,9 +6,9 @@ This tool syncs GitHub Issues to Google Tasks, using Google Gemini to summarize 
 ## Features
 
 - Fetches assigned issues from specified GitHub repositories.
-- Summarizes issue details using Google Gemini. If the API doesn't work, then all the Issue will be uploaded to Google Tasks
+- Summarizes issue details using Google Gemini. If the API doesn't work, then all the issues will be uploaded to Google Tasks
 - Creates tasks in Google Tasks with the summary and link.
-- Avoids duplicates creating a `last_run.json` file, even if you run [`index.js`](index.js) two times, the script recognized if the issue was already uploaded to Google Tasks
+- Avoids duplicates by creating a `last_run.json` file. Even if you run [`index.js`](index.js) two times, the script recognizes if the issue was already uploaded to Google Tasks
 
 ## Setup Guide
 
@@ -55,8 +55,8 @@ This is the most complex part. We need to create a project in Google Cloud and e
     *   **Download the JSON file**. Rename it to [`credentials.json`](credentials.json) and place it in the root of this project folder.
 
 ### 4. Configuration
-## 4.1Cloning this repository in your machine
-1.  Open the [`.env`](.env) file.
+## 4.1 Cloning this repository in your machine
+1.  Create a [`.env`](.env) file in the directory.
 2.  Fill in the values:
 
 ```ini
@@ -69,20 +69,20 @@ GITHUB_REPOS=owner/repo_name_1, owner/repo_name_2
 GEMINI_API_KEY=your_gemini_key_here
 ```
 
-### 5. Run the Tool
-
-1.  Install dependencies:
+3. Open the terminal (cmd) and Install dependencies in the directory:
     ```bash
     npm install
     ```
-2.  Run the script:
+4.  Run the script:
     ```bash
     node index.js
     ```
-3.  On the first run, it will open a browser window to authenticate with Google. Follow the prompts to allow access to your Tasks. This step will create a `token.json`file.
+    On the first run, it will open a browser window to authenticate with Google. You can just follow to allow access to your Tasks. This will create a `token.json` file, and then the tool will run.
+
+    After the tool syncs GitHub issues with Google Tasks, a file named "last_run.json" will be created.
 
 ## 4.2 Using Github
-Even using github to sync using a workflow, we require to clone and create the `token.json` file mentioned above. This file is needed.
+Even using GitHub to sync using a workflow, we need to clone and create the `token.json` file mentioned above. This file is needed.
 1. Go to your repository secrets: Settings > Secrets and Variables > Actions > Secrets > New Repository Secret, and create 5 new secrets.
 
    - For Gemini API KEY
@@ -100,7 +100,7 @@ Even using github to sync using a workflow, we require to clone and create the `
    - To connect to Google Tasks
       - title: `GOOGLE_REFRESH_TOKEN`
       - secret: `paste_the_refresh_token_attribute_in_token.json_file_content_here`
-      - In `token.js`, there is a part for refresh_token, next to it you can find the code to copy and paste: `"refresh_token":"copy_this_code_and_paste_in_secret"`. Do not use the entire .json file or the sync will not work)
+      - In `token.js`, there is a part for refresh_token. Next to it, you can find the code to copy and paste: `"refresh_token":"copy_this_code_and_paste_in_secret"`. Do not use the entire .json file, or the sync will not work.
 
 2. Then, create the following workflow (a file in `repo/.github/workflows` directory)
 
@@ -152,4 +152,4 @@ jobs:
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
 ````
 
-Check all the secrets (in the end of the code) use the same title that are defined in your repository secrets.
+Check all the secrets (at the end of the code), use the same titles that are defined in your repository secrets.
