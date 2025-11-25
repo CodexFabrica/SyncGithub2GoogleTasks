@@ -1,4 +1,3 @@
-[![Sync GitHub Issues to Google Tasks](https://github.com/aleaicr/SyncGithub2GoogleTask/actions/workflows/main.yml/badge.svg)](https://github.com/aleaicr/SyncGithub2GoogleTask/actions/workflows/main.yml)
 # GitHub to Google Tasks Sync
 
 This tool syncs GitHub Issues to Google Tasks, using Google Gemini to summarize the issue content. It will only sync issues of the repositories you specify. Allowed for standard (free) account too.
